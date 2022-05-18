@@ -3,7 +3,7 @@ package pl.gdynia.ctm.restctm.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.gdynia.ctm.restctm.entity.ArrayWrapper;
+import pl.gdynia.ctm.restctm.model.ArrayWrapper;
 import pl.gdynia.ctm.restctm.factory.SortStrategyFactory;
 
 

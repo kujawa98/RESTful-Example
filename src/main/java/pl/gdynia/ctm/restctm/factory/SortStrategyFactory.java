@@ -11,7 +11,7 @@ import java.util.Map;
 public class SortStrategyFactory {
     private final Map<String, SortStrategy> strategyMap;
 
-    public SortStrategyFactory() {
+    private SortStrategyFactory() {
         strategyMap = new HashMap<>();
         strategyMap.put("bubble", new BubbleSortStrategy());
         strategyMap.put("quick", new QuickSortStrategy());

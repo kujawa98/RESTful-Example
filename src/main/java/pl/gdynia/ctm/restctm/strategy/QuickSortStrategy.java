@@ -1,7 +1,7 @@
 package pl.gdynia.ctm.restctm.strategy;
 
 
-import pl.gdynia.ctm.restctm.entity.ArrayWrapper;
+import pl.gdynia.ctm.restctm.model.ArrayWrapper;
 
 public class QuickSortStrategy implements SortStrategy {
     private int partition(int array[], int low, int high) {

@@ -7,12 +7,9 @@ import org.springframework.hateoas.Link;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.gdynia.ctm.restctm.entity.ArrayWrapper;
-import pl.gdynia.ctm.restctm.entity.ArraysRepository;
+import pl.gdynia.ctm.restctm.model.ArrayWrapper;
+import pl.gdynia.ctm.restctm.model.ArraysRepository;
 import pl.gdynia.ctm.restctm.service.SortService;
-
-import java.util.LinkedList;
-import java.util.List;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
@@ -53,10 +50,9 @@ public class SortController {
     }
 
     @PostMapping(value = "/sort")
-    public ResponseEntity<EntityModel<ArrayWrapper>> posteArr(@RequestBody int[] input) {
-        var wrapper = new ArrayWrapper(input);
+    public ResponseEntity<EntityModel<ArrayWrapper>> postArray(@RequestBody int[] input) {
+        var wrapper = arraysRepository.add(input);
         String id = String.valueOf(wrapper.getId());
-        arraysRepository.add(wrapper);
         var bubbleLink = getBubbleLink(id);
         var quickLink = getQuickLink(id);
         wrapper.add(bubbleLink,quickLink);
@@ -65,7 +61,7 @@ public class SortController {
     }
 
     @DeleteMapping(value = "/sort/{id}")
-    public ResponseEntity<CollectionModel<ArrayWrapper>> deleteArr(@PathVariable String id) {
+    public ResponseEntity<CollectionModel<ArrayWrapper>> deleteArray(@PathVariable String id) {
         arraysRepository.delete(Integer.parseInt(id));
         var link = getMainLink();
         return new ResponseEntity<>(CollectionModel.of(arraysRepository.getArrays(), link), HttpStatus.OK);
