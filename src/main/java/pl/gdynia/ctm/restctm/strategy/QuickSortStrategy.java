@@ -1,6 +1,7 @@
 package pl.gdynia.ctm.restctm.strategy;
 
 
+import org.springframework.util.Assert;
 import pl.gdynia.ctm.restctm.model.ArrayWrapper;
 
 public class QuickSortStrategy implements SortStrategy {
@@ -32,6 +33,7 @@ public class QuickSortStrategy implements SortStrategy {
 
     @Override
     public void sort(ArrayWrapper input) {
+        Assert.notNull(input, "Input cannot be null");
         int[] tab = input.getArr();
         quickSort(tab, 0, tab.length - 1);
     }
