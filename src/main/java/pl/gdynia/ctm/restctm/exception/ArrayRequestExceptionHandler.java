@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class ArrayRequestExceptionHandler {
     @ExceptionHandler(value = {ArrayRequestException.class})
     public ResponseEntity<Object> handleApiRequestException(ArrayRequestException exception) {
-        var ep = new APIException(exception.getMessage(), exception, HttpStatus.BAD_REQUEST);
+        var ep = new APIException(exception.getMessage(), exception);
         return new ResponseEntity<>(ep, HttpStatus.BAD_REQUEST);
     }
 

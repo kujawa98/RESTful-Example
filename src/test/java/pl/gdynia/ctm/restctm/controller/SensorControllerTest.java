@@ -19,11 +19,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 @AutoConfigureMockMvc
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class SortControllerTest {
+public class SensorControllerTest {
     private final MockMvc mockMvc;
 
     @Autowired
-    public SortControllerTest(MockMvc mockMvc) {
+    public SensorControllerTest(MockMvc mockMvc) {
         this.mockMvc = mockMvc;
     }
 
